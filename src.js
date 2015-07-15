@@ -18,16 +18,27 @@ window.onload = function()
         //here i go
 
 
-        var width = 60;
+        /*
+        dessine le plateau de jeux
+        prend en parametre :
+        le tableau formant le snake
+        + la fraise
+        */
+        function drawTheGame()
+        {
+            var width = 40;
 
-        for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < 50; i++) {
 
-            for (var j = 0; j < 10; j++) {
+                for (var j = 0; j < 50; j++) {
 
-                context.fillStyle = "rgba(0, 0, 255, 0.5)";
-                context.fillRect( j*(width+5), i*(width+5) , width, width);
-                
+                    context.fillStyle = "rgba(0, 0, 255, 0.5)";
+                    context.fillRect( j*(width+5), i*(width+5) , width, width);
+                    
 
+                };
             };
-        };
+        }
+
+        drawTheGame();
 }
