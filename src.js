@@ -96,9 +96,16 @@ window.onload = function()
             };
         }
 
+        function play()
+        {
+                snake = getSnake();
+                strawberry = getStrawberry();
+                var id = setInterval(drawTheGame, 1000);
+        }
+
         var snake = getSnake();
         var strawberry = getStrawberry();
-
-        drawTheGame();
+        var periode = setInterval(play, 1000); 
+        
 
 }
