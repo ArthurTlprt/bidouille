@@ -14,9 +14,37 @@ window.onload = function()
             return;
         }
 
+        //global 
+        var width = 29,
+        height = 13;
 
         //here i go
 
+
+        /*var tab = new Array();
+
+        function initTab(tab)
+        {
+            for (var i = 0; i < 10; i++) {
+                tab[i] = i;
+                alert(tab[i]);
+            }
+        }
+
+        initTab(tab);*/
+
+        function getRandomArbitrary(min, max) 
+        {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function getStrawberry()
+        {
+            var strawberry = { x : 0, y : 0};
+            strawberry.x = getRandomArbitrary(0, width);
+            strawberry.y = getRandomArbitrary(0, height);
+            return strawberry;
+        }
 
         /*
         dessine le plateau de jeux
@@ -26,19 +54,30 @@ window.onload = function()
         */
         function drawTheGame()
         {
-            var width = 40;
+            var size = 40;
 
-            for (var i = 0; i < 50; i++) {
+            for (var i = 0; i < height; i++) {
 
-                for (var j = 0; j < 50; j++) {
+                for (var j = 0; j < width; j++) {
 
-                    context.fillStyle = "rgba(0, 0, 255, 0.5)";
-                    context.fillRect( j*(width+5), i*(width+5) , width, width);
-                    
-
+                    if (strawberry.x == j && strawberry.y == i) 
+                    {
+                        context.fillStyle = "#76ff03";
+                    } 
+                    else
+                    {
+                        context.fillStyle = "rgba(0, 0, 255, 0.5)";
+                    };
+                    context.fillRect( j*(size+5), i*(size+5) , size, size);
                 };
             };
         }
 
+        var strawberry = getStrawberry();
+        /*alert(strawberry.x);
+        alert(strawberry.y);*/
+
+
         drawTheGame();
+
 }
