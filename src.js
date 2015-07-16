@@ -41,9 +41,28 @@ window.onload = function()
         function getStrawberry()
         {
             var strawberry = { x : 0, y : 0};
-            strawberry.x = getRandomArbitrary(0, width);
-            strawberry.y = getRandomArbitrary(0, height);
+
+            //Faire 
+            do
+            {
+                strawberry.x = getRandomArbitrary(0, width);
+                strawberry.y = getRandomArbitrary(0, height);
+                /*alert(strawberry.x);
+                alert(strawberry.y);*/
+            }while(snake[0].x == strawberry.x && snake[0].y == strawberry.y);
+
             return strawberry;
+        }
+
+        function getSnake()
+        {
+            var snake = new Array( {x : 0, y : 0} );
+            snake[0].x = getRandomArbitrary(0, width);
+            snake[0].y = getRandomArbitrary(0, height);
+
+            /*alert(snake[0].x);
+            alert(snake[0].y);*/
+            return snake;
         }
 
         /*
@@ -68,15 +87,17 @@ window.onload = function()
                     {
                         context.fillStyle = "rgba(0, 0, 255, 0.5)";
                     };
+                    if (snake[0].x == j && snake[0].y == i)
+                    {
+                        context.fillStyle = "#e65100";
+                    } 
                     context.fillRect( j*(size+5), i*(size+5) , size, size);
                 };
             };
         }
 
+        var snake = getSnake();
         var strawberry = getStrawberry();
-        /*alert(strawberry.x);
-        alert(strawberry.y);*/
-
 
         drawTheGame();
 
