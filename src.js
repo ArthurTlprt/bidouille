@@ -98,45 +98,62 @@ window.onload = function()
 
         function getDirection()
         {
-            document.addEventListener('keydown', function(e) 
+            return document.addEventListener('keydown', function(e) 
             {
-                var key = e.keyCode;
-                switch (key) {
-                    case 37:
-                        return "left";
-                    break;
-
-                    case 38:
-                        return "up";
-                    break;
-
-                    case 39:
-                        return "right";
-                    break;
-
-                    case 40:
-                        return "down";
-                    break;
-                }
+                key = e.keyCode;
             }
             , false);
         }
 
+        function move()
+        {
+            getDirection();
+
+            switch (key) {
+                case 37:
+                    //return 'left';
+                    snake[0].x -= 1;
+                break;
+
+                case 38:
+                    //return 'up';
+                    snake[0].y -= 1;
+                break;
+
+                case 39:
+                    //return 'right';
+                    snake[0].x += 1;
+                break;
+
+                case 40:
+                    //return 'down';
+                    snake[0].y += 1;
+                break;
+                }
+
+        }
+
         function play()
         {
-                context.clearRect(0,0,1350,650);
-                snake = getSnake();
-                strawberry = getStrawberry();
-                //key = getDirection();
+                context.clearRect(0,0,1350,650);    //je réinitialise le canvas
+                //snake = getSnake();
+                //strawberry = getStrawberry();
+                move();
                 //console.log(key);
+                if(snake[0] == strawberry)
+                {
+                    //On agrandit la taille du snake
+                    //snake[snake.length].x = 
+                    //On initialise une autre strawberry
+                    strawberry = getStrawberry();
+                }
                 drawTheGame();
-                setTimeout(play, 1000);
+                setTimeout(play, 500);
         }
 
         var snake = getSnake();
         var strawberry = getStrawberry();
-        //var key = getDirection();
+        var key;
+        getDirection();
         play();
-        
-
 }
