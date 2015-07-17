@@ -25,7 +25,7 @@ window.onload = function()
 
         function initTab(tab)
         {
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 10; i++) { 
                 tab[i] = i;
                 alert(tab[i]);
             }
@@ -107,29 +107,49 @@ window.onload = function()
 
         function move()
         {
+            //clavier
             getDirection();
 
+            //bouge dans le direction
             switch (key) {
                 case 37:
                     //return 'left';
                     snake[0].x -= 1;
+                    console.log("x" + snake[0].x);
                 break;
 
                 case 38:
                     //return 'up';
                     snake[0].y -= 1;
+                    console.log("y" + snake[0].y);
                 break;
 
                 case 39:
                     //return 'right';
                     snake[0].x += 1;
+                    console.log("x" + snake[0].x);
                 break;
 
                 case 40:
                     //return 'down';
                     snake[0].y += 1;
+                    console.log("y" + snake[0].y);
                 break;
                 }
+
+                //thorique
+                if (snake[0].x == -1) {
+                        snake[0].x = width;
+                    }
+                else if (snake[0].y == -1) {
+                        snake[0].y = height;
+                    }
+                else if (snake[0].x == width) {
+                        snake[0].x = 0;
+                    }
+                else if (snake[0].y == height) {
+                        snake[0].y = 0;
+                    };
 
         }
 
@@ -140,10 +160,13 @@ window.onload = function()
                 //strawberry = getStrawberry();
                 move();
                 //console.log(key);
-                if(snake[0] == strawberry)
+                if(snake[snake.length-1].x == strawberry.x && snake[snake.length-1].y == strawberry.y)
                 {
                     //On agrandit la taille du snake
-                    //snake[snake.length].x = 
+                    eaten = true;
+                    //snake[snake.length].x = strawberry.x; 
+                    //snake[snake.length].y = strawberry.y;
+                    snake[snake.length] = { x : strawberry.x , y : strawberry.y };
                     //On initialise une autre strawberry
                     strawberry = getStrawberry();
                 }
@@ -154,6 +177,7 @@ window.onload = function()
         var snake = getSnake();
         var strawberry = getStrawberry();
         var key;
+        var eaten = false;
         getDirection();
         play();
 }
