@@ -105,32 +105,60 @@ window.onload = function()
             , false);
         }
 
+        function ondulation()
+        {
+            if(snake.length > 1)
+            {
+                for(var i = 0; i < snake.length-1; i++)
+                {
+                    snake[i+1] = snake[i];
+                }
+            }
+        }
+
         function move()
         {
             //clavier
             getDirection();
 
-            //bouge dans le direction
+            //bouge dans la direction
             switch (key) {
                 case 37:
+
+                    //bouge tout le corps
+                    ondulation();
+
                     //return 'left';
                     snake[0].x -= 1;
+
                     console.log("x" + snake[0].x);
                 break;
 
                 case 38:
+                    //bouge tout le corps
+                    ondulation()
+
                     //return 'up';
                     snake[0].y -= 1;
+                    
+
                     console.log("y" + snake[0].y);
                 break;
 
                 case 39:
+                    //bouge tout le corps
+                    ondulation()
+
                     //return 'right';
                     snake[0].x += 1;
+
                     console.log("x" + snake[0].x);
                 break;
 
                 case 40:
+                    //bouge tout le corps
+                    ondulation();
+                    
                     //return 'down';
                     snake[0].y += 1;
                     console.log("y" + snake[0].y);
@@ -140,16 +168,19 @@ window.onload = function()
                 //thorique
                 if (snake[0].x == -1) {
                         snake[0].x = width;
-                    }
+                }
                 else if (snake[0].y == -1) {
                         snake[0].y = height;
-                    }
+                }
                 else if (snake[0].x == width) {
                         snake[0].x = 0;
-                    }
+                }
                 else if (snake[0].y == height) {
                         snake[0].y = 0;
-                    };
+                };
+
+                //on fait bouger tout le corps
+
 
         }
 
