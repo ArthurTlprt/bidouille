@@ -96,16 +96,47 @@ window.onload = function()
             };
         }
 
+        function getDirection()
+        {
+            document.addEventListener('keydown', function(e) 
+            {
+                var key = e.keyCode;
+                switch (key) {
+                    case 37:
+                        return "left";
+                    break;
+
+                    case 38:
+                        return "up";
+                    break;
+
+                    case 39:
+                        return "right";
+                    break;
+
+                    case 40:
+                        return "down";
+                    break;
+                }
+            }
+            , false);
+        }
+
         function play()
         {
+                context.clearRect(0,0,1350,650);
                 snake = getSnake();
                 strawberry = getStrawberry();
-                var id = setInterval(drawTheGame, 1000);
+                //key = getDirection();
+                //console.log(key);
+                drawTheGame();
+                setTimeout(play, 1000);
         }
 
         var snake = getSnake();
         var strawberry = getStrawberry();
-        var periode = setInterval(play, 1000); 
+        //var key = getDirection();
+        play();
         
 
 }
