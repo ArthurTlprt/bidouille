@@ -14,9 +14,21 @@ window.onload = function()
             return;
         }
 
+        //responsive
+        canvas.width = screen.width;
+        canvas.height = screen.height;
+
+        alert(canvas.width);
+        alert(canvas.height);
+
         //global 
-        var width = 29,
-        height = 13;
+        var size = 40;
+        var width = Math.floor(canvas.width / (size +5) ),
+        height = Math.floor(canvas.height / (size +5) ) - 3;
+
+        alert(width);
+        alert(height);
+
 
         //here i go
 
@@ -45,8 +57,6 @@ window.onload = function()
             {
                 strawberry.x = getRandomArbitrary(0, width);
                 strawberry.y = getRandomArbitrary(0, height);
-                /*alert(strawberry.x);
-                alert(strawberry.y);*/
             }while(snake[0].x == strawberry.x && snake[0].y == strawberry.y);
 
             return strawberry;
@@ -57,9 +67,6 @@ window.onload = function()
             var snake = new Array( {x : 0, y : 0} );
             snake[0].x = getRandomArbitrary(0, width);
             snake[0].y = getRandomArbitrary(0, height);
-
-            /*alert(snake[0].x);
-            alert(snake[0].y);*/
             return snake;
         }
 
@@ -71,7 +78,6 @@ window.onload = function()
         */
         function drawTheGame()
         {
-            var size = 40;
 
             for (var i = 0; i < height; i++) {
 
@@ -115,7 +121,6 @@ window.onload = function()
                 {
                     snake[i].x = snake[i-1].x;
                     snake[i].y = snake[i-1].y;
-                    //need to be completed
                 }
             }
         }
@@ -132,8 +137,6 @@ window.onload = function()
 
                     //return 'left';
                     snake[0].x -= 1;
-                    //bouge tout le corps
-                    //ondulation();
                     console.log("x" + snake[0].x);
                 break;
 
@@ -141,26 +144,18 @@ window.onload = function()
 
                     //return 'up';
                     snake[0].y -= 1;
-                    
-                    //bouge tout le corps
-                    //ondulation();
-
                     console.log("y" + snake[0].y);
                 break;
 
                 case 39:
                     //return 'right';
                     snake[0].x += 1;
-                    //bouge tout le corps
-                    //ondulation();
                     console.log("x" + snake[0].x);
                 break;
 
                 case 40:
                     //return 'down';
                     snake[0].y += 1;
-                    //bouge tout le corps
-                    //ondulation();
                     console.log("y" + snake[0].y);
                 break;
                 }
@@ -194,17 +189,13 @@ window.onload = function()
         function play()
         {
                 context.clearRect(0,0,1350,650);    //je réinitialise le canvas
-                //snake = getSnake();
-                //strawberry = getStrawberry();
                 move();
-                //console.log(key);
                 if(snake[snake.length-1].x == strawberry.x && snake[snake.length-1].y == strawberry.y)
                 {
                     //On agrandit la taille du snake
                     eaten = true;
                 }
                 drawTheGame();
-                debug();
                 setTimeout(play, 200);
         }
 
