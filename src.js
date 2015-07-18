@@ -21,17 +21,15 @@ window.onload = function()
         //here i go
 
 
-        /*var tab = new Array();
 
-        function initTab(tab)
+
+        function debug(tab)
         {
-            for (var i = 0; i < 10; i++) { 
-                tab[i] = i;
-                alert(tab[i]);
+            for (var i = 0; i < snake.length; i++) { 
+                console.log("snake["+ i +"].x = " + snake[i].x);
+                console.log("snake["+ i +"].y = " + snake[i].y);
             }
         }
-
-        initTab(tab);*/
 
         function getRandomArbitrary(min, max) 
         {
@@ -87,10 +85,14 @@ window.onload = function()
                     {
                         context.fillStyle = "rgba(0, 0, 255, 0.5)";
                     };
-                    if (snake[0].x == j && snake[0].y == i)
+                    for(var k = 0; k < snake.length; k++)
                     {
-                        context.fillStyle = "#e65100";
-                    } 
+                        if (snake[k].x == j && snake[k].y == i)
+                        {
+                            context.fillStyle = "#e65100";
+                            k = snake.length;
+                        } 
+                    }
                     context.fillRect( j*(size+5), i*(size+5) , size, size);
                 };
             };
@@ -109,9 +111,10 @@ window.onload = function()
         {
             if(snake.length > 1)
             {
-                for(var i = 0; i < snake.length-1; i++)
+                for(var i = snake.length-1; i > 0; i--)
                 {
-                    snake[i+1] = snake[i];
+                    snake[i] = snake[i-1];
+                    //need to be completed
                 }
             }
         }
@@ -120,47 +123,43 @@ window.onload = function()
         {
             //clavier
             getDirection();
-
+            //on fait bouger tout le corps
+            ondulation();
             //bouge dans la direction
             switch (key) {
                 case 37:
 
-                    //bouge tout le corps
-                    ondulation();
-
                     //return 'left';
                     snake[0].x -= 1;
-
+                    //bouge tout le corps
+                    //ondulation();
                     console.log("x" + snake[0].x);
                 break;
 
                 case 38:
-                    //bouge tout le corps
-                    ondulation()
 
                     //return 'up';
                     snake[0].y -= 1;
                     
+                    //bouge tout le corps
+                    //ondulation();
 
                     console.log("y" + snake[0].y);
                 break;
 
                 case 39:
-                    //bouge tout le corps
-                    ondulation()
-
                     //return 'right';
                     snake[0].x += 1;
-
+                    //bouge tout le corps
+                    //ondulation();
                     console.log("x" + snake[0].x);
                 break;
 
                 case 40:
-                    //bouge tout le corps
-                    ondulation();
-                    
                     //return 'down';
                     snake[0].y += 1;
+                    //bouge tout le corps
+                    //ondulation();
                     console.log("y" + snake[0].y);
                 break;
                 }
@@ -179,7 +178,19 @@ window.onload = function()
                         snake[0].y = 0;
                 };
 
-                //on fait bouger tout le corps
+                //si mangé, on agrandit
+                if(eaten == true)
+                {
+                    if(queue == 0)
+                    {
+                        snake[snake.length] = { x : strawberry.x , y : strawberry.y };
+                        eaten = false;
+                        //On initialise une autre strawberry
+                        strawberry = getStrawberry();
+                        queue = snake.length;
+                    }
+                    queue--;                
+                }
 
 
         }
@@ -197,17 +208,17 @@ window.onload = function()
                     eaten = true;
                     //snake[snake.length].x = strawberry.x; 
                     //snake[snake.length].y = strawberry.y;
-                    snake[snake.length] = { x : strawberry.x , y : strawberry.y };
-                    //On initialise une autre strawberry
-                    strawberry = getStrawberry();
+
                 }
                 drawTheGame();
+                debug();
                 setTimeout(play, 500);
         }
 
         var snake = getSnake();
         var strawberry = getStrawberry();
         var key;
+        var queue = snake.length;
         var eaten = false;
         getDirection();
         play();
