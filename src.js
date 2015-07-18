@@ -205,7 +205,7 @@ window.onload = function()
                 }
                 drawTheGame();
                 debug();
-                setTimeout(play, 500);
+                setTimeout(play, 200);
         }
 
         var snake = getSnake();
