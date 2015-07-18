@@ -18,16 +18,16 @@ window.onload = function()
         canvas.width = screen.width;
         canvas.height = screen.height;
 
-        alert(canvas.width);
-        alert(canvas.height);
 
         //global 
         var size = 40;
         var width = Math.floor(canvas.width / (size +5) ),
         height = Math.floor(canvas.height / (size +5) ) - 3;
+        var head = new Image();
+        head.src = "head.jpg";
 
-        alert(width);
-        alert(height);
+        var straw = new Image();
+        straw.src = "strawberry.jpg";
 
 
         //here i go
@@ -79,19 +79,30 @@ window.onload = function()
         function drawTheGame()
         {
 
-            for (var i = 0; i < height; i++) {
+            for (var i = 0; i < height; i++) 
+            {
+                for (var j = 0; j < width; j++) 
+                {
 
-                for (var j = 0; j < width; j++) {
-
-                    if (strawberry.x == j && strawberry.y == i) 
+                    if (snake[0].x == j && snake[0].y == i) 
                     {
-                        context.fillStyle = "#76ff03";
+                        context.drawImage(head, j*(size+5), i*(size+5));
+                    }
+                    else if(strawberry.x == j && strawberry.y == i)
+                    {
+                        context.drawImage(straw, j*(size+5), i*(size+5));
+                    }
+                    else
+                    {
+                        if (strawberry.x == j && strawberry.y == i) 
+                    {
+                        //context.fillStyle = "#76ff03";
                     } 
                     else
                     {
                         context.fillStyle = "rgba(0, 0, 255, 0.5)";
                     };
-                    for(var k = 0; k < snake.length; k++)
+                    for(var k = 1; k < snake.length; k++)
                     {
                         if (snake[k].x == j && snake[k].y == i)
                         {
@@ -100,6 +111,7 @@ window.onload = function()
                         } 
                     }
                     context.fillRect( j*(size+5), i*(size+5) , size, size);
+                    }
                 };
             };
         }
