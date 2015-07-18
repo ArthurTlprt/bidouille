@@ -113,7 +113,8 @@ window.onload = function()
             {
                 for(var i = snake.length-1; i > 0; i--)
                 {
-                    snake[i] = snake[i-1];
+                    snake[i].x = snake[i-1].x;
+                    snake[i].y = snake[i-1].y;
                     //need to be completed
                 }
             }
@@ -181,15 +182,10 @@ window.onload = function()
                 //si mangé, on agrandit
                 if(eaten == true)
                 {
-                    if(queue == 0)
-                    {
-                        snake[snake.length] = { x : strawberry.x , y : strawberry.y };
-                        eaten = false;
-                        //On initialise une autre strawberry
-                        strawberry = getStrawberry();
-                        queue = snake.length;
-                    }
-                    queue--;                
+                    snake[snake.length] = { x : strawberry.x , y : strawberry.y };
+                    eaten = false;
+                    //On initialise une autre strawberry
+                    strawberry = getStrawberry();      
                 }
 
 
@@ -206,9 +202,6 @@ window.onload = function()
                 {
                     //On agrandit la taille du snake
                     eaten = true;
-                    //snake[snake.length].x = strawberry.x; 
-                    //snake[snake.length].y = strawberry.y;
-
                 }
                 drawTheGame();
                 debug();
@@ -218,7 +211,6 @@ window.onload = function()
         var snake = getSnake();
         var strawberry = getStrawberry();
         var key;
-        var queue = snake.length;
         var eaten = false;
         getDirection();
         play();
