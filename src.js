@@ -23,7 +23,7 @@ window.onload = function()
 
 
 
-        function debug(tab)
+        function debug()
         {
             for (var i = 0; i < snake.length; i++) { 
                 console.log("snake["+ i +"].x = " + snake[i].x);
