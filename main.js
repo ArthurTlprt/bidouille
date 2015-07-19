@@ -30,14 +30,14 @@ window.onload = function()
                 context.clearRect(0,0,canvas.width,canvas.height);    //je réinitialise le canvas
                 //snake = getSnake();
                 //strawberry = getStrawberry();
-                mySnake.move(myLayer.eaten);
+                myLayer.eaten = mySnake.move(myLayer.eaten);
                 //console.log(key);
                 if(mySnake.tail[mySnake.tail.length-1].x == myLayer.strawberry.x && mySnake.tail[tail.length-1].y == myLayer.strawberry.y)
                 {
                     //On agrandit la taille du snake
                     myLayer.eaten = true;
                 }
-                myLayer.drawTheGame(mySnake.tail);
+                myLayer.drawTheGame(mySnake.tail ,context);
                 //debug();
                 setTimeout(play, 200);
         }

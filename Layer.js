@@ -33,7 +33,7 @@ function Layer(width, height, size)
     le tableau formant le tail
     + la fraise
     */
-    function drawTheGame(tail)
+    this.drawTheGame = function(tail, context)
     {
 
         for (var i = 0; i < this.height; i++) {
@@ -56,7 +56,7 @@ function Layer(width, height, size)
                         k = tail.length;
                     } 
                 }
-                context.fillRect( j*(size+5), i*(size+5) , size, size);
+                context.fillRect( j*(this.size+5), i*(this.size+5) , this.size, this.size);
             };
         };
     }
