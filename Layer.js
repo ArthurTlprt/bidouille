@@ -21,8 +21,8 @@ function Layer(width, height, size)
         //Faire 
         do
         {
-            this.strawberry.x = getRandomArbitrary(0, this.width);
-            this.strawberry.y = getRandomArbitrary(0, this.height);
+            this.strawberry.x = this.getRandomArbitrary(0, this.width);
+            this.strawberry.y = this.getRandomArbitrary(0, this.height);
 
         }while(tail[0].x == this.strawberry.x && tail[0].y == this.strawberry.y);
     }

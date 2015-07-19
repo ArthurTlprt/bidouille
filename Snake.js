@@ -24,8 +24,8 @@ function Snake(width, height)
     this.initTail = function()
     {
         this.tail = new Array( {x : 0, y : 0} );
-        this.tail[0].x = getRandomArbitrary(0,this.width);
-        this.tail[0].y = getRandomArbitrary(0, this.height);
+        this.tail[0].x = this.getRandomArbitrary(0,this.width);
+        this.tail[0].y = this.getRandomArbitrary(0, this.height);
     };
 
     this.getDirection = function()
