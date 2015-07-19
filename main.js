@@ -14,15 +14,20 @@ window.onload = function()
             return;
         }
 
-        //global 
-        var width = 29,
-        height = 13;
+        //responsive
+        canvas.width = screen.width;
+        canvas.height = screen.height;
 
-        //here i go
+
+        //global 
+        var size = 40;
+        var width = Math.floor(canvas.width / (size +5) ),
+        height = Math.floor(canvas.height / (size +5) ) - 3;
+
         
         function play()
         {
-                context.clearRect(0,0,1350,650);    //je réinitialise le canvas
+                context.clearRect(0,0,canvas.width,canvas.height);    //je réinitialise le canvas
                 //snake = getSnake();
                 //strawberry = getStrawberry();
                 move();
