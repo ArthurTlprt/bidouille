@@ -1,11 +1,10 @@
 function Snake(width, height)
 {
-	 //global 
-        this.tail;
-        this.key;
-        //this.eaten = eaten;
-        this.width = width;
-        this.height = height;
+    //global 
+    this.tail;
+    this.key;
+    this.width = width;
+    this.height = height;
 
     //here i go
     this.getRandomArbitrary = function(min, max) 
@@ -29,18 +28,15 @@ function Snake(width, height)
         console.log(this.tail[0].x);
     };
 
+    this.funct = function(e) 
+    {
+        this.key = e.keyCode;
+        console.log("getDirection, this.key"+this.key);
+    }
+
     this.getDirection = function()
     {
-        return document.addEventListener('keydown', function(e) 
-        {
-            this.key = e.keyCode;
-            console.log("getDirection, this.key"+this.key);
-            return this.key;
-            /*this.key = e.keyCode;
-            var key = this.key;
-            console.log("getD "+this.key);*/
-        }
-        , false);
+        return document.addEventListener('keydown', this.funct, false);
     }
 
     this.ondulation = function()
@@ -58,7 +54,7 @@ function Snake(width, height)
     this.move = function(eaten, strawberry)
     {
         //clavier
-        this.key = this.getDirection();
+        this.getDirection();
         //on fait bouger tout le corps
         this.ondulation();
         //bouge dans la direction

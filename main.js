@@ -49,6 +49,6 @@ window.onload = function()
         myLayer.initStrawberry(mySnake.tail);
         myLayer.eaten = false;
         
-        mySnake.getDirection();
+        //mySnake.getDirection();
         play();
 }
