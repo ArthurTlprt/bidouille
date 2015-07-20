@@ -26,6 +26,7 @@ function Snake(width, height)
         this.tail = new Array( {x : 0, y : 0} );
         this.tail[0].x = this.getRandomArbitrary(0,this.width);
         this.tail[0].y = this.getRandomArbitrary(0, this.height);
+        console.log(this.tail[0].x);
     };
 
     this.getDirection = function()
@@ -33,9 +34,14 @@ function Snake(width, height)
         return document.addEventListener('keydown', function(e) 
         {
             this.key = e.keyCode;
+            console.log("getDirection, this.key"+this.key);
+            return this.key;
+            /*this.key = e.keyCode;
+            var key = this.key;
+            console.log("getD "+this.key);*/
         }
         , false);
-    };
+    }
 
     this.ondulation = function()
     {
@@ -49,13 +55,14 @@ function Snake(width, height)
         }
     };
 
-    this.move = function(eaten)
+    this.move = function(eaten, strawberry)
     {
         //clavier
-        this.getDirection();
+        this.key = this.getDirection();
         //on fait bouger tout le corps
         this.ondulation();
         //bouge dans la direction
+        console.log("move "+this.key);
         switch (this.key) {
             case 37:
 
@@ -112,7 +119,6 @@ function Snake(width, height)
             if(eaten == true)
             {
                 this.tail[this.tail.length] = { x : strawberry.x , y : strawberry.y };
-                eaten = false;
                 //On initialise une autre strawberry      
             }
             return eaten;

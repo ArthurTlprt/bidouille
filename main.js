@@ -27,19 +27,20 @@ window.onload = function()
         
         function play()
         {
-                context.clearRect(0,0,canvas.width,canvas.height);    //je réinitialise le canvas
-                //snake = getSnake();
-                //strawberry = getStrawberry();
-                myLayer.eaten = mySnake.move(myLayer.eaten);
-                //console.log(key);
-                if(mySnake.tail[mySnake.tail.length-1].x == myLayer.strawberry.x && mySnake.tail[tail.length-1].y == myLayer.strawberry.y)
-                {
-                    //On agrandit la taille du snake
-                    myLayer.eaten = true;
-                }
-                myLayer.drawTheGame(mySnake.tail ,context);
-                //debug();
-                setTimeout(play, 200);
+            context.clearRect(0,0,canvas.width,canvas.height);    //je réinitialise le canvas
+            myLayer.eaten = mySnake.move(myLayer.eaten, myLayer.strawberry);
+            if(myLayer.eaten == true)
+            {
+                myLayer.initStrawberry(mySnake.tail);
+            }
+            if(mySnake.tail[mySnake.tail.length-1].x == myLayer.strawberry.x && mySnake.tail[mySnake.tail.length-1].y == myLayer.strawberry.y)
+            {
+                //On agrandit la taille du snake
+                myLayer.eaten = true;
+            }
+            myLayer.drawTheGame(mySnake.tail ,context);
+            mySnake.debug();
+            setTimeout(play, 200);
         }
 
         var mySnake = new Snake(width, height);
