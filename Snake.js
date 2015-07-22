@@ -54,7 +54,7 @@ function Snake(width, height)
     this.move = function(eaten, strawberry)
     {
         //clavier
-        this.getDirection();
+        console.log("this.getDirection "+this.getDirection());
         //on fait bouger tout le corps
         this.ondulation();
         //bouge dans la direction
