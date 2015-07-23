@@ -25,6 +25,7 @@ function Layer(width, height, size)
             this.strawberry.y = this.getRandomArbitrary(0, this.height);
 
         }while(tail[0].x == this.strawberry.x && tail[0].y == this.strawberry.y);
+        this.eaten = false;
     }
 
     /*

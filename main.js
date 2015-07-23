@@ -20,18 +20,31 @@ window.onload = function()
 
 
         //global 
-        var size = 40;
+        var size = 50;
         var width = Math.floor(canvas.width / (size +5) ),
-        height = Math.floor(canvas.height / (size +5) ) - 3;
+        height = Math.floor(canvas.height / (size +5) );
+        var key;
+
+         function getDirection()
+        {
+            return document.addEventListener('keydown', function(e) 
+            {
+                key = e.keyCode;
+            }
+            , false);
+        }
 
         
         function play()
         {
             context.clearRect(0,0,canvas.width,canvas.height);    //je réinitialise le canvas
+            getDirection();
+            mySnake.key = key;
             myLayer.eaten = mySnake.move(myLayer.eaten, myLayer.strawberry);
             if(myLayer.eaten == true)
             {
                 myLayer.initStrawberry(mySnake.tail);
+
             }
             if(mySnake.tail[mySnake.tail.length-1].x == myLayer.strawberry.x && mySnake.tail[mySnake.tail.length-1].y == myLayer.strawberry.y)
             {
@@ -40,7 +53,7 @@ window.onload = function()
             }
             myLayer.drawTheGame(mySnake.tail ,context);
             mySnake.debug();
-            setTimeout(play, 200);
+            setTimeout(play, 150);
         }
 
         var mySnake = new Snake(width, height);

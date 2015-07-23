@@ -28,6 +28,8 @@ function Snake(width, height)
         console.log(this.tail[0].x);
     };
 
+    /*
+    merdre
     this.funct = function(e) 
     {
         this.key = e.keyCode;
@@ -37,7 +39,8 @@ function Snake(width, height)
     this.getDirection = function()
     {
         return document.addEventListener('keydown', this.funct, false);
-    }
+    }*/
+
 
     this.ondulation = function()
     {
@@ -53,9 +56,7 @@ function Snake(width, height)
 
     this.move = function(eaten, strawberry)
     {
-        //clavier
-        console.log("this.getDirection "+this.getDirection());
-        //on fait bouger tout le corps
+        
         this.ondulation();
         //bouge dans la direction
         console.log("move "+this.key);
