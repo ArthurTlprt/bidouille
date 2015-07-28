@@ -41,9 +41,6 @@ window.onload = function()
             getDirection();
             mySnake.key = key;
             myLayer.eaten = mySnake.move(myLayer.eaten, myLayer.strawberry);
-            if (mySnake.isDead) {
-                //on stop le jeu
-            };
             if(myLayer.eaten == true)
             {
                 myLayer.initStrawberry(mySnake.tail);
@@ -56,7 +53,9 @@ window.onload = function()
             }
             myLayer.drawTheGame(mySnake.tail ,context);
             mySnake.debug();
-            setTimeout(play, 150);
+            if (!mySnake.isDead()) {
+                setTimeout(play, 150);
+            };
         }
 
         var mySnake = new Snake(width, height);

@@ -31,8 +31,8 @@ function Snake(width, height)
 
     this.isDead = function()
     {
-        for (var i = 1; i < tail.length; i++) {
-            if (tail[0].x == tail[i].x && tail[0].y == tail[i].y) {
+        for (var i = 1; i < this.tail.length; i++) {
+            if (this.tail[0].x == this.tail[i].x && this.tail[0].y == this.tail[i].y) {
                 this.dead == true;
                 return true;
             };
