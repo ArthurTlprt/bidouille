@@ -34,12 +34,13 @@ function Snake(width, height)
         for (var i = 1; i < tail.length; i++) {
             if (tail[0].x == tail[i].x && tail[0].y == tail[i].y) {
                 this.dead == true;
+                return true;
             };
         };
     }
 
     /*
-    merdre
+    //merdre
     this.funct = function(e) 
     {
         this.key = e.keyCode;
