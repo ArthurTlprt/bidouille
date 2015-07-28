@@ -5,8 +5,9 @@
 			font-family: Arial;
 			padding: 10px;
 			display: block;
-			width: 13%;
+			width: 80%;
 			margin: auto;
+			font-size: 10em;
       }
       .orange p {
 			background: #FF5C33;
@@ -32,3 +33,7 @@
 		  color: #33D685;
 		  text-align: center;
 	  }
+	  	.hide
+	  	{
+	  		visibility: hidden;
+	  	}

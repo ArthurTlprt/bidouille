@@ -25,13 +25,53 @@ window.onload = function()
         height = Math.floor(canvas.height / (size +5) );
         var key;
 
-         function getDirection()
+        function getDirection()
         {
             return document.addEventListener('keydown', function(e) 
             {
                 key = e.keyCode;
             }
             , false);
+        }
+
+        function gameOver()
+        {
+            var myCanvas = document.getElementsByTagName('canavs')[0];
+            document.body.removeChild(canvas);
+
+            var h1 = document.createElement('h1');
+            document.body.appendChild(h1);
+            h1.innerHTML = 'Score de malade!!!';
+            h1.id = 'myFuckinBeautifulTitle';
+
+            var div = document.createElement('div');
+            document.body.appendChild(div);
+            div.id = 'myColoredDiv';
+
+            var p = document.createElement('p');
+            div.appendChild(p);
+            p.innerHTML = "t'es un beau gosse";
+
+
+
+
+            var clignotement = function()
+            { 
+                if (document.getElementById('myColoredDiv').className == 'blue')
+                { 
+                    document.getElementById('myColoredDiv').className = 'orange'; 
+                    document.getElementById('myFuckinBeautifulTitle').className = 'titre2';
+                } 
+                else
+                { 
+                    document.getElementById('myColoredDiv').className = 'blue';
+                    document.getElementById('myFuckinBeautifulTitle').className = 'titre1';
+                } 
+            }; 
+
+            // mise en place de l appel de la fonction toutes les 0.8 secondes 
+            // Pour arrêter le clignotement : clearInterval(periode); 
+            periode = setInterval(clignotement, 300); 
         }
 
         
@@ -58,6 +98,7 @@ window.onload = function()
             }
             else{
                 context.clearRect(0,0,canvas.width,canvas.height);    //je réinitialise le canvas
+                gameOver();
             }
         }
 
