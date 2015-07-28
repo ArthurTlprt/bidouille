@@ -3,6 +3,7 @@ function Snake(width, height)
     //global 
     this.tail;
     this.key;
+    this.dead = false;
     this.width = width;
     this.height = height;
 
@@ -27,6 +28,15 @@ function Snake(width, height)
         this.tail[0].y = this.getRandomArbitrary(0, this.height);
         console.log(this.tail[0].x);
     };
+
+    this.isDead = function()
+    {
+        for (var i = 1; i < tail.length; i++) {
+            if (tail[0].x == tail[i].x && tail[0].y == tail[i].y) {
+                this.dead == true;
+            };
+        };
+    }
 
     /*
     merdre
@@ -119,6 +129,5 @@ function Snake(width, height)
                 //On initialise une autre strawberry      
             }
             return eaten;
-
     };
 }
