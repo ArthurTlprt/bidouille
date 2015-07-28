@@ -55,7 +55,10 @@ window.onload = function()
             mySnake.debug();
             if (!mySnake.isDead()) {
                 setTimeout(play, 150);
-            };
+            }
+            else{
+                context.clearRect(0,0,canvas.width,canvas.height);    //je réinitialise le canvas
+            }
         }
 
         var mySnake = new Snake(width, height);
@@ -64,6 +67,5 @@ window.onload = function()
         myLayer.initStrawberry(mySnake.tail);
         myLayer.eaten = false;
         
-        //mySnake.getDirection();
         play();
 }
