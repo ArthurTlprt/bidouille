@@ -29,12 +29,18 @@ function Snake(width, height)
         console.log(this.tail[0].x);
     };
 
-    this.isDead = function()
+    this.isDead = function(poop)
     {
         for (var i = 1; i < this.tail.length; i++) {
             if (this.tail[0].x == this.tail[i].x && this.tail[0].y == this.tail[i].y) {
                 this.dead == true;
                 return true;
+            };
+            for (var j = 0; j < poop.length; j++) {
+                if (this.tail[0].x == poop[j].x && this.tail[0].y == poop[j].y) {
+                    this.dead == true;
+                    return true;
+                };
             };
         };
     }
@@ -65,7 +71,7 @@ function Snake(width, height)
         }
     };
 
-    this.move = function(eaten, strawberry)
+    this.move = function()
     {
         
         this.ondulation();
@@ -123,12 +129,13 @@ function Snake(width, height)
                     this.tail[0].y = 0;
             };
 
-            //si mangé, on agrandit
-            if(eaten == true)
-            {
-                this.tail[this.tail.length] = { x : strawberry.x , y : strawberry.y };
-                //On initialise une autre strawberry      
-            }
-            return eaten;
     };
+
+    this.eat = function(strawberry, poop){
+        //si mangé, on agrandit
+        this.tail[this.tail.length] = { x : strawberry.x , y : strawberry.y };
+        //On initialise une autre strawberry
+        poop[poop.length] = { x : strawberry.x, y : strawberry.y};
+        return poop;
+    }
 }

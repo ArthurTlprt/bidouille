@@ -55,8 +55,6 @@ window.onload = function()
             p.innerHTML = "T'as " + mySnake.tail.length + " bordel!";
 
 
-
-
             var clignotement = function()
             { 
                 if (document.getElementById('myColoredDiv').className == 'blue')
@@ -82,7 +80,10 @@ window.onload = function()
             context.clearRect(0,0,canvas.width,canvas.height);    //je réinitialise le canvas
             getDirection();
             mySnake.key = key;
-            myLayer.eaten = mySnake.move(myLayer.eaten, myLayer.strawberry);
+            if (myLayer.eaten == true) {
+                myLayer.poop = mySnake.eat(myLayer.strawberry, myLayer.poop);
+            };
+            mySnake.move();
             if(myLayer.eaten == true)
             {
                 myLayer.initStrawberry(mySnake.tail);
@@ -95,7 +96,7 @@ window.onload = function()
             }
             myLayer.drawTheGame(mySnake.tail ,context);
             //mySnake.debug();
-            if (!mySnake.isDead()) {
+            if (!mySnake.isDead(myLayer.poop)) {
                 setTimeout(play, myLayer.interval(mySnake.tail.length));
             }
             else{

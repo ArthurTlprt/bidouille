@@ -10,6 +10,7 @@ function Layer(width, height, size)
 
     this.strawberry;
     this.eaten;
+    this.poop = new Array();
 
     //here i go
     this.interval = function(n)
@@ -59,6 +60,11 @@ function Layer(width, height, size)
                 else
                 {
                     context.fillStyle = "rgba(0, 0, 255, 0.5)";
+                };
+                for (var k = 0; k < this.poop.length; k++) {
+                    if (this.poop[k].x == j && this.poop[k].y == i) {
+                        context.fillStyle = "#8b4513";
+                    };
                 };
                 for(var k = 0; k < tail.length; k++)
                 {
