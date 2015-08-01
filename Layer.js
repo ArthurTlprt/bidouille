@@ -5,10 +5,21 @@ function Layer(width, height, size)
     this.width = width;
     this.height = height;
 
+    this.timeMax = 550;
+    this.timeMin = 30;
+
     this.strawberry;
     this.eaten;
 
     //here i go
+    this.interval = function(n)
+    {
+        n-=1;
+        var time = this.timeMax * Math.exp(-0.5*n) + this.timeMin;
+        console.log("interval = "+time);
+        return time;
+    }
+
     this.getRandomArbitrary = function(min, max) 
     {
         return Math.floor(Math.random() * (max - min)) + min;

@@ -41,16 +41,18 @@ window.onload = function()
 
             var h1 = document.createElement('h1');
             document.body.appendChild(h1);
-            h1.innerHTML = 'Score de malade!!!';
             h1.id = 'myFuckinBeautifulTitle';
+            h1.className = 'blue';
+            h1.innerHTML = 'Score de malade!!!';
 
             var div = document.createElement('div');
             document.body.appendChild(div);
             div.id = 'myColoredDiv';
+            div.className = 'titre1';
 
             var p = document.createElement('p');
             div.appendChild(p);
-            p.innerHTML = "t'es un beau gosse";
+            p.innerHTML = "T'as " + mySnake.tail.length + " bordel!";
 
 
 
@@ -92,9 +94,9 @@ window.onload = function()
                 myLayer.eaten = true;
             }
             myLayer.drawTheGame(mySnake.tail ,context);
-            mySnake.debug();
+            //mySnake.debug();
             if (!mySnake.isDead()) {
-                setTimeout(play, 150);
+                setTimeout(play, myLayer.interval(mySnake.tail.length));
             }
             else{
                 context.clearRect(0,0,canvas.width,canvas.height);    //je réinitialise le canvas
