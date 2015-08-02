@@ -1,9 +1,10 @@
-function Layer(width, height, size)
+function Layer(width, height, size, space)
 {
 	//global
 	this.size = size;
     this.width = width;
     this.height = height;
+    this.space = space;
 
     this.timeMax = 550;
     this.timeMin = 30;
@@ -74,7 +75,7 @@ function Layer(width, height, size)
                         k = tail.length;
                     } 
                 }
-                context.fillRect( j*(this.size+5), i*(this.size+5) , this.size, this.size);
+                context.fillRect( j*(this.size+space), i*(this.size+space) , this.size, this.size);
             };
         };
     }

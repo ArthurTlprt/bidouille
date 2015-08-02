@@ -21,8 +21,9 @@ window.onload = function()
 
         //global 
         var size = 50;
-        var width = Math.floor(canvas.width / (size +5) ),
-        height = Math.floor(canvas.height / (size +5) );
+        var space = 5;
+        var width = Math.floor(canvas.width / (size +space) ),
+        height = Math.floor(canvas.height / (size +space) );
         var key;
 
         function getDirection()
@@ -107,7 +108,7 @@ window.onload = function()
 
         var mySnake = new Snake(width, height);
         mySnake.initTail();
-        var myLayer = new Layer(width, height, size);
+        var myLayer = new Layer(width, height, size, space);
         myLayer.initStrawberry(mySnake.tail);
         myLayer.eaten = false;
         
