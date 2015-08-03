@@ -1,10 +1,11 @@
-function Layer(width, height, size, space)
+function Layer(width, height, size, space, color)
 {
 	//global
 	this.size = size;
     this.width = width;
     this.height = height;
     this.space = space;
+    this.color = color;
 
     this.timeMax = 550;
     this.timeMin = 30;
@@ -56,22 +57,22 @@ function Layer(width, height, size, space)
 
                 if (this.strawberry.x == j && this.strawberry.y == i) 
                 {
-                    context.fillStyle = "#76ff03";
+                    context.fillStyle = this.color.strawberry;
                 } 
                 else
                 {
-                    context.fillStyle = "rgba(0, 0, 255, 0.5)";
+                    context.fillStyle = this.color.font;
                 };
                 for (var k = 0; k < this.poop.length; k++) {
                     if (this.poop[k].x == j && this.poop[k].y == i) {
-                        context.fillStyle = "#8b4513";
+                        context.fillStyle = this.color.poop;
                     };
                 };
                 for(var k = 0; k < tail.length; k++)
                 {
                     if (tail[k].x == j && tail[k].y == i)
                     {
-                        context.fillStyle = "#e65100";
+                        context.fillStyle = this.color.snake;
                         k = tail.length;
                     } 
                 }
