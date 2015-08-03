@@ -72,7 +72,11 @@ function Layer(width, height, size, space, color)
                 {
                     if (tail[k].x == j && tail[k].y == i)
                     {
-                        context.fillStyle = this.color.snake;
+                        if (k % 2 == 0) {
+                        context.fillStyle = this.color.snake1;
+                        } else{
+                            context.fillStyle = this.color.snake2;                            
+                        };
                         k = tail.length;
                     } 
                 }

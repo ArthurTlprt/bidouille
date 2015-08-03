@@ -22,7 +22,8 @@ window.onload = function()
         //global 
         var size = 50;
         var space = 1;
-        var color = { snake : "#e65100", strawberry : "#76ff03", poop : "#8b4513", font : "rgba(0, 0, 255, 0.5)"}
+        var color = { snake1 : "#ff0000", snake2 : "#00bfff" , strawberry : "#ff007e", poop : "#8b4513", font : "#ffffff"};
+        var keyDirection = { up : 90, down : 83, left : 81, right : 68};
         var width = Math.floor(canvas.width / (size +space) ),
         height = Math.floor(canvas.height / (size +space) );
         var key;
@@ -107,7 +108,7 @@ window.onload = function()
             }
         }
 
-        var mySnake = new Snake(width, height);
+        var mySnake = new Snake(width, height, keyDirection);
         mySnake.initTail();
         var myLayer = new Layer(width, height, size, space, color);
         myLayer.initStrawberry(mySnake.tail);

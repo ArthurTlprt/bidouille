@@ -1,4 +1,4 @@
-function Snake(width, height)
+function Snake(width, height, keyDirection)
 {
     //global 
     this.tail;
@@ -6,6 +6,7 @@ function Snake(width, height)
     this.dead = false;
     this.width = width;
     this.height = height;
+    this.keyDirection = keyDirection;
 
     //here i go
     this.getRandomArbitrary = function(min, max) 
@@ -78,7 +79,7 @@ function Snake(width, height)
         //bouge dans la direction
         console.log("move "+this.key);
         switch (this.key) {
-            case 37:
+            case this.keyDirection.left:
 
                 //return 'left';
                 this.tail[0].x -= 1;
@@ -87,7 +88,7 @@ function Snake(width, height)
                 console.log("x" + this.tail[0].x);
             break;
 
-            case 38:
+            case this.keyDirection.up:
 
                 //return 'up';
                 this.tail[0].y -= 1;
@@ -98,7 +99,7 @@ function Snake(width, height)
                 console.log("y" + this.tail[0].y);
             break;
 
-            case 39:
+            case this.keyDirection.right:
                 //return 'right';
                 this.tail[0].x += 1;
                 //bouge tout le corps
@@ -106,7 +107,7 @@ function Snake(width, height)
                 console.log("x" + this.tail[0].x);
             break;
 
-            case 40:
+            case this.keyDirection.down:
                 //return 'down';
                 this.tail[0].y += 1;
                 //bouge tout le corps
