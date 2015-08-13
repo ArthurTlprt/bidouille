@@ -1,4 +1,4 @@
-function Layer(width, height, size, space, color)
+function Layer(width, height, size, space, color, head, straw)
 {
 	//global
 	this.size = size;
@@ -13,6 +13,12 @@ function Layer(width, height, size, space, color)
     this.strawberry;
     this.eaten;
     this.poop = new Array();
+
+    this.head = new Image();
+    this.head.src = head;
+
+    this.straw = new Image();
+    this.straw.src = straw;
 
     //here i go
     this.interval = function(n)
@@ -62,26 +68,34 @@ function Layer(width, height, size, space, color)
             for (var j = 0; j < this.width; j++) {
 
                 if (this.strawberry.x == j && this.strawberry.y == i) {
-                    context.fillStyle = this.color.strawberry;
-                } else {
+                    //context.fillStyle = this.color.strawberry;
+                    context.drawImage(this.straw, j*(this.size+this.space), i*(this.size+this.space));
+
+                } else if(tail[0].x == j && tail[0].y == i){
+
+                    context.drawImage(this.head, j*(this.size+this.space), i*(this.size+this.space));
+                }else{
+
                     context.fillStyle = this.color.font;
-                };
-                for (var k = 0; k < this.poop.length; k++) {
-                    if (this.poop[k].x == j && this.poop[k].y == i) {
-                        context.fillStyle = this.color.poop;
-                    };
-                };
-                for(var k = 0; k < tail.length; k++) {
-                    if (tail[k].x == j && tail[k].y == i) {
-                        if (k % 2 == 0) {
-                        context.fillStyle = this.color.snake1;
-                        } else {
-                            context.fillStyle = this.color.snake2;                            
+                    
+                    for (var k = 0; k < this.poop.length; k++) {
+                        if (this.poop[k].x == j && this.poop[k].y == i) {
+                            context.fillStyle = this.color.poop;
                         };
-                        k = tail.length;
-                    } 
+                    };
+
+                    for(var k = 0; k < tail.length; k++) {
+                        if (tail[k].x == j && tail[k].y == i) {
+                            if (k % 2 == 0) {
+                            context.fillStyle = this.color.snake1;
+                            } else {
+                                context.fillStyle = this.color.snake2;                            
+                            };
+                            k = tail.length;
+                        }
+                    }
+                    context.fillRect( j*(this.size+space), i*(this.size+space) , this.size, this.size);
                 }
-                context.fillRect( j*(this.size+space), i*(this.size+space) , this.size, this.size);
             };
         };
     }
