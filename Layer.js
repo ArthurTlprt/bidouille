@@ -8,7 +8,7 @@ function Layer(width, height, size, space, color)
     this.color = color;
 
     this.timeMax = 550;
-    this.timeMin = 30;
+    this.timeMin = 40;
 
     this.strawberry;
     this.eaten;
@@ -35,10 +35,16 @@ function Layer(width, height, size, space, color)
         //Faire 
         do
         {
+            var myBool = true;
             this.strawberry.x = this.getRandomArbitrary(0, this.width);
             this.strawberry.y = this.getRandomArbitrary(0, this.height);
+            for (var i = 0; i < this.poop.length; i++) {
+                if (this.poop[i].x == this.strawberry.x && this.poop[i].y == this.strawberry.y) {
+                    myBool = false;
+                };
+            };
 
-        }while(tail[0].x == this.strawberry.x && tail[0].y == this.strawberry.y);
+        }while(tail[0].x == this.strawberry.x && tail[0].y == this.strawberry.y && myBool == true);
         this.eaten = false;
     }
 
@@ -55,12 +61,9 @@ function Layer(width, height, size, space, color)
 
             for (var j = 0; j < this.width; j++) {
 
-                if (this.strawberry.x == j && this.strawberry.y == i) 
-                {
+                if (this.strawberry.x == j && this.strawberry.y == i) {
                     context.fillStyle = this.color.strawberry;
-                } 
-                else
-                {
+                } else {
                     context.fillStyle = this.color.font;
                 };
                 for (var k = 0; k < this.poop.length; k++) {
@@ -68,13 +71,11 @@ function Layer(width, height, size, space, color)
                         context.fillStyle = this.color.poop;
                     };
                 };
-                for(var k = 0; k < tail.length; k++)
-                {
-                    if (tail[k].x == j && tail[k].y == i)
-                    {
+                for(var k = 0; k < tail.length; k++) {
+                    if (tail[k].x == j && tail[k].y == i) {
                         if (k % 2 == 0) {
                         context.fillStyle = this.color.snake1;
-                        } else{
+                        } else {
                             context.fillStyle = this.color.snake2;                            
                         };
                         k = tail.length;
