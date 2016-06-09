@@ -1,5 +1,6 @@
 window.onload = function()
 {
+  alert("Utilise zqsd pour déplacer mattéo");
     var canvas = document.getElementById('mon_canvas');
         if(!canvas)
         {
@@ -15,8 +16,8 @@ window.onload = function()
         }
 
     //responsive
-    canvas.width = screen.width -100;
-    canvas.height = screen.height -150;
+    canvas.width = screen.width -150;
+    canvas.height = screen.height -200;
 
 
     //global
@@ -27,8 +28,8 @@ window.onload = function()
     var width = Math.floor(canvas.width / (size +space) ),
     height = Math.floor(canvas.height / (size +space) );
     var key;
-    var head = "images/head.jpg";
-    var straw = "images/straw.jpg";
+    var head = "images/matteo2.png";
+    var straw = "images/citron.png";
 
     function getDirection()
     {
@@ -46,9 +47,9 @@ window.onload = function()
 
         var h1 = document.createElement('h1');
         document.body.appendChild(h1);
-        h1.id = 'myFuckinBeautifulTitle';
-        h1.className = 'blue';
-        h1.innerHTML = 'Score de malade!!!';
+        //h1.id = 'myFuckinBeautifulTitle';
+        //h1.className = 'blue';
+        //h1.innerHTML = 'Trop bon';
 
         var div = document.createElement('div');
         document.body.appendChild(div);
@@ -57,7 +58,7 @@ window.onload = function()
 
         var p = document.createElement('p');
         div.appendChild(p);
-        p.innerHTML = "T'as " + mySnake.tail.length + " bordel!";
+        p.innerHTML = "Mattéo a mangé " + mySnake.tail.length + " citrons!";
 
 
         var clignotement = function()
