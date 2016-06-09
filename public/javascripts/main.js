@@ -15,8 +15,8 @@ window.onload = function()
         }
 
     //responsive
-    canvas.width = screen.width;
-    canvas.height = screen.height;
+    canvas.width = screen.width -100;
+    canvas.height = screen.height -150;
 
 
     //global
