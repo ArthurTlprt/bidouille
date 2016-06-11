@@ -13,4 +13,15 @@ window.onload = function()
       alert("Impossible de récupérer le context du canvas");
       return;
   }
+
+  function play(){
+    m_electron.update();
+    m_electron.display(context, canvas);
+    setTimeout(play, 20);
+  }
+
+  m_electron = new Particule(100, 100, 5, 2, '#da3c2b');
+  m_electron.display(context, canvas);
+  play();
+
 }
