@@ -10,14 +10,13 @@ window.onload = function()
    */
 
 
-  m_electron = new Particule(100, 100, 0.1, -0.1, '#da3c2b', -1);
-  m_proton = new Particule(200, 200, 0.1, 0.1, '#526eae', 1);
+  m_electron = new Particule(400, 400, 0.1, -0.1, '#da3c2b', 0.5);
+  m_proton = new Particule(200, 200, 1, 1, '#526eae', -0.5);
 
   var particules = [m_electron, m_proton];
 
 
   var forces = [{x: 0, y: 0}];
-  var ke = 1;
 
   function main(){
 

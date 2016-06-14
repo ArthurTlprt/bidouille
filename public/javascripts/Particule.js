@@ -14,6 +14,8 @@ class Particule {
     this.color = color;
     this.q = q;
 
+    this.ke = 10;
+
   }
 
   updateForces(particules){
@@ -24,8 +26,8 @@ class Particule {
         dist = Math.pow( this.x - particules[i].x, 2) + Math.pow( this.y - particules[i].y, 2);
         if(dist == 0){ dit = 0.001 };
         this.forces.push(
-          {x: (this.q * particules[i].q * Math.abs(this.x - particules[i].x))/dist,
-           y: (this.q * particules[i].q * Math.abs(this.y - particules[i].y))/dist });
+          {x: (this.ke * this.q * particules[i].q * Math.abs(this.x - particules[i].x))/dist,
+           y: (this.ke * this.q * particules[i].q * Math.abs(this.y - particules[i].y))/dist });
       }
     }
   }
@@ -49,7 +51,7 @@ class Particule {
 
   display(context, canvas){
     context.fillStyle = this.color;
-    context.arc(this.x, this.y, 15, 0, 2*Math.PI, true);
+    context.arc(this.x, this.y, 5, 0, 2*Math.PI, true);
     context.fill();
   }
 }
