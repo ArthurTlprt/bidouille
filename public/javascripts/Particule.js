@@ -1,28 +1,55 @@
 class Particule {
-  constructor(x0, y0, vx0, vy0, color) {
+
+  constructor(x0, y0, vx0, vy0, color, q) {
     this.x = x0;
     this.y = y0;
-    this.vx = 0;
-    this.vy = 0;
-    this.ax = 0.2;
-    this.ay = 0.1;
-    this.tetha = 0;
+
+    this.vx = vx0;
+    this.vy = vy0;
+
+    this.ax = 0;
+    this.ay = 0;
+
+    this.forces = [];
     this.color = color;
+    this.q = q;
+
   }
-  update(){
+
+  updateForces(particules){
+    this.forces = [];
+    var dist = 0;
+    for(var i in particules){
+      if(this != particules[i]){
+        dist = Math.pow( this.x - particules[i].x, 2) + Math.pow( this.y - particules[i].y, 2);
+        if(dist == 0){ dit = 0.001 };
+        this.forces.push(
+          {x: (this.q * particules[i].q * Math.abs(this.x - particules[i].x))/dist,
+           y: (this.q * particules[i].q * Math.abs(this.y - particules[i].y))/dist });
+      }
+    }
+  }
+
+  update(particules){
+    this.updateForces(particules);
+    // update des accélérations
+    this.ax = 0;
+    this.ay = 0;
+    for(var i in this.forces){
+      this.ax += this.forces[i].x;
+      this.ay += this.forces[i].y;
+    }
+    // update des vitesses
     this.vx += this.ax;
     this.vy += this.ay;
+    // update des positions
     this.x += this.vx;
     this.y += this.vy;
-    //this.x = 500 + 100 * Math.cos(this.tetha+=0.01);
-    //this.y = 300 + 100 * Math.sin(this.tetha+=0.01);
-    console.log('this.tetha', this.tetha);
   }
+
   display(context, canvas){
-    context.beginPath();
-    context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = this.color;
-    context.arc(this.x, this.y, 10, 0, 2*Math.PI, true);
+    context.arc(this.x, this.y, 15, 0, 2*Math.PI, true);
     context.fill();
   }
 }
