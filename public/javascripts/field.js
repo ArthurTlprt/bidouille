@@ -15,13 +15,12 @@ window.onload = function()
   }
 
   function play(){
+    context.clearRect(0, 0, canvas.width, canvas.height);
     m_electron.update();
     m_electron.display(context, canvas);
-    setTimeout(play, 20);
+    setTimeout(play, 10);
   }
-
-  m_electron = new Particule(100, 100, 5, 2, '#da3c2b');
-  m_electron.display(context, canvas);
+  m_electron = new Particule(100, 100, 1, -1, '#da3c2b');
   play();
 
 }
