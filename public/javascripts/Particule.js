@@ -24,10 +24,10 @@ class Particule {
     for(var i in particules){
       if(this != particules[i]){
         dist = Math.pow( this.x - particules[i].x, 2) + Math.pow( this.y - particules[i].y, 2);
-        if(dist == 0){ dit = 0.001 };
+        if(dist == 0){ dit = 0.00001 };
         this.forces.push(
-          {x: (this.ke * this.q * particules[i].q * Math.abs(this.x - particules[i].x))/dist,
-           y: (this.ke * this.q * particules[i].q * Math.abs(this.y - particules[i].y))/dist });
+          {x: (this.ke * this.q * particules[i].q * (this.x - particules[i].x))/dist,
+           y: (this.ke * this.q * particules[i].q * (this.y - particules[i].y))/dist });
       }
     }
   }
@@ -50,8 +50,10 @@ class Particule {
   }
 
   display(context, canvas){
+    context.beginPath();
     context.fillStyle = this.color;
     context.arc(this.x, this.y, 5, 0, 2*Math.PI, true);
     context.fill();
+    context.closePath();
   }
 }
