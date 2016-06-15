@@ -1,21 +1,21 @@
 window.onload = function()
 {
-  var canvas = initCanvas(document);
-  var context = initContext(document);
-
+  canvas = initCanvas(document);
+  context = initContext(document);
 
   /**
    * Le but est de simuler les forces de coulombs
    * entre des charges oposées
    */
 
-
-  var particules = [
-    new Particule(500, 500, 0.01, -0.01, '#da3c2b', 0.5),
-    new Particule(400, 500, 0.01, -0.01, '#da3c2b', 0.5),
-    new Particule(500, 400, 0.01, -0.01, '#526eae', -0.5),
-    new Particule(200, 200, 0.02, 0.02, '#526eae', -0.5)
+  particules = [
+    new Particule(500, 500, 0, -0, '#da3c2b', 0.5),
+    new Particule(400, 500, 0, -0, '#da3c2b', 0.5),
+    new Particule(500, 400, 0, -0, '#526eae', -0.5),
+    new Particule(200, 200, 0, 0, '#526eae', -0.5)
   ];
+
+  var mouse_x, mouse_y;
 
 
   function main(){
@@ -33,8 +33,8 @@ window.onload = function()
   }
 
   $("body").mousemove(function(e) {
-    var mouse_x = e.pageX;
-    var mouse_y = e.pageY;
+    mouse_x = e.pageX;
+    mouse_y = e.pageY;
   })
 
   main();
