@@ -28,9 +28,14 @@ window.onload = function()
       particules[i].display(context, canvas);
     }
 
+
     setTimeout(main, 15);
   }
 
+  $("body").mousemove(function(e) {
+    var mouse_x = e.pageX;
+    var mouse_y = e.pageY;
+  })
 
   main();
 
