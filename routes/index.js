@@ -10,4 +10,8 @@ router.get('/particules', function(req, res, next) {
   res.render('particules', {});
 });
 
+router.get('/solar', function(req, res, next) {
+  res.render('solar', {});
+});
+
 module.exports = router;
