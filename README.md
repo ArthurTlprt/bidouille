@@ -1,3 +1,3 @@
-# snake
-build a snake with JavaScript, it's useless, i know.
-I just wanted to build a snake with javascript power, because i didn't code in js since too much time.
+# hacks
+I'm having fun with js
+So i build a particule generator that interact with coulomb's law, a snake, and a solar system (or something like that).
