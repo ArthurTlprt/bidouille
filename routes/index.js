@@ -14,4 +14,8 @@ router.get('/solar', function(req, res, next) {
   res.render('solar', {});
 });
 
+router.get('/pics', function(req, res, next) {
+  res.render('pics', {});
+});
+
 module.exports = router;
